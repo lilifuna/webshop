@@ -28,6 +28,8 @@ namespace apteka
                 itemListSubtract.Items.Add("-");
                 itemsAddList.Items.Add("+");
             }
+
+            if (App.cart.Count == 0) cartList.Items.Add("Koszyk jest pusty");
         }
 
         protected void itemsAddList_Click(object sender, BulletedListEventArgs e)
