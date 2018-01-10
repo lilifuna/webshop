@@ -17,10 +17,10 @@
         </asp:CheckBoxList>
         <asp:CheckBoxList ID="CheckBoxList2" runat="server" Height="168px" Width="188px" style="float:left" Visible="False">
         </asp:CheckBoxList>
-        <asp:CheckBoxList ID="CheckBoxList3" runat="server" Height="168px" Width="188px" style="float:left" Visible="False">
+        <asp:CheckBoxList ID="CheckBoxList3" runat="server" Height="168px" Width="189px" style="float:left" Visible="False">
         </asp:CheckBoxList>
         
-        <asp:Button ID="addToCart" runat="server" Font-Bold="True" Font-Overline="True" Font-Size="Large" Height="123px" OnClick="Button1_Click" Text="Dodaj do koszyka" Width="253px" />
+        <asp:Button ID="addToCart" runat="server" Font-Bold="True" Font-Overline="True" Font-Size="Large" Height="123px" OnClick="Button1_Click"  Text="Dodaj do koszyka" Width="236px" />
         
     </div>
     

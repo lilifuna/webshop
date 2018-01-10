@@ -11,7 +11,7 @@ namespace apteka
     {
         public static Boolean initialized = false;
 
-        public static List<String> cart = new List<String>();
+        public static Hashtable cart = new Hashtable();
 
 
         public static Hashtable products = new Hashtable()
@@ -21,10 +21,10 @@ namespace apteka
             {"Tussidex",8 },
             {"Dexacaps", 25},
             {"Antidol", 20},
-            {"Mst 200", 15},
-            {"Fentanyl Actavis", 10},
+            {"Mst200", 15},
+            {"Fentanyl", 10},
             {"OxyContin", 8},
-            {"Morfini Sulfas", 150},
+            {"Morfini", 150},
             {"Ibuprom", 5},
             {"Diazepam", 25},
             {"Karfentanyl", 100},

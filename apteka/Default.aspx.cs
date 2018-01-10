@@ -47,10 +47,12 @@ namespace apteka
                 {
                     if (item.Selected)
                     {
-                        App.cart.Add(item.Value);
+                        App.cart.Add(item.Text, 1);
                     }
                 }
             }
+
+            Server.Transfer("ShoppingCart.aspx");
         }
 
         private void PopulateLists()
