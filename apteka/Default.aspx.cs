@@ -12,6 +12,7 @@ namespace apteka
     {
 
         List<CheckBoxList> categoriesLists = new List<CheckBoxList>();
+        Hashtable cart = new Hashtable();  //zamiast statycznego tworze nowy
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -47,9 +48,10 @@ namespace apteka
                 {
                     if (item.Selected)
                     {
-                        App.cart.Add(item.Text, 1);
+                        cart.Add(item.Text, 1);
                     }
                 }
+                Session["cart"] = cart; //dodaje do sesji
             }
 
             Server.Transfer("ShoppingCart.aspx");

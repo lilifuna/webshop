@@ -10,6 +10,8 @@ namespace apteka
 {
     public partial class ShoppingCart : System.Web.UI.Page
     {
+        Hashtable cart;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             PopulateList();
@@ -21,15 +23,20 @@ namespace apteka
             cartList.Items.Clear();
             itemListSubtract.Items.Clear();
             itemsAddList.Items.Clear();
-            foreach (DictionaryEntry item in App.cart)
-            {
-                float price = (int)App.products[item.Key.ToString()] * (int)item.Value;
-                cartList.Items.Add(item.Key.ToString() + "  " + item.Value.ToString() + "szt.  " + price + " zł" );
-                itemListSubtract.Items.Add("-");
-                itemsAddList.Items.Add("+");
-            }
 
-            if (App.cart.Count == 0) cartList.Items.Add("Koszyk jest pusty");
+            cart = (Hashtable)Session["cart"]; //czytam koszyk z sesji
+
+            if (cart != null)
+            {
+                foreach (DictionaryEntry item in cart)
+                {
+                    float price = (int)App.products[item.Key.ToString()] * (int)item.Value;
+                    cartList.Items.Add(item.Key.ToString() + "  " + item.Value.ToString() + "szt.  " + price + " zł");
+                    itemListSubtract.Items.Add("-");
+                    itemsAddList.Items.Add("+");
+                }
+            }
+            else cartList.Items.Add("Koszyk jest pusty");
         }
 
         protected void itemsAddList_Click(object sender, BulletedListEventArgs e)
@@ -53,7 +60,8 @@ namespace apteka
         private void UpdatePrice()
         {
             float price = 0;
-            foreach (DictionaryEntry item in App.cart)
+            string shipType = "";
+            foreach (DictionaryEntry item in cart) //zmiana na sesyjny koszyk
             {
                 price += (int)App.products[item.Key.ToString()] * (int)item.Value;
             }
@@ -62,16 +70,22 @@ namespace apteka
             {
                 case 0:
                     price += 10;
+                    shipType = "Kurier";
                     break;
                 case 1:
                     price += 15;
+                    shipType = "Poczta";
                     break;
                 case 2:
                     price += 8;
+                    shipType = "Paczkomat";
                     break;
             }
 
             totalTextBox.Text = price + "zł";
+            Session["totalCost"] = price;
+            Session["shipType"] = shipType;  //dodaje informacje do sesji zeby wczytac w podsumowaniu
+
 
         }
 
@@ -82,7 +96,7 @@ namespace apteka
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            Server.Transfer("Summary.aspx");
+            Server.Transfer("Summary.aspx"); //przechodze do podsumowania
         }
     }
 

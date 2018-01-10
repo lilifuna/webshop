@@ -24,7 +24,7 @@
             </asp:BulletedList>
         </div>
         Koszt :<asp:TextBox ID="totalTextBox" runat="server" Height="47px" style="margin-left: 75px" Width="198px"></asp:TextBox>
-                <asp:Button ID="openSummary" runat="server" Font-Bold="True" Font-Overline="True" Font-Size="Large" Height="123px" OnClick="Button2_Click"  Text="Zamów" Width="236px" />
+                <asp:Button ID="openSummary" runat="server" Font-Bold="True" Font-Overline="True" Font-Size="Large" Height="123px" OnClick="Button2_Click"  Text="Przejdź do podsumowania" Width="350px" />
 
     </form>
 </body>
